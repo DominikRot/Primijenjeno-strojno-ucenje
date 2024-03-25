@@ -1,0 +1,31 @@
+#Zadatak 2
+#Napišite program koji od korisnika zahtijeva upis jednog broja koji predstavlja nekakvu ocjenu i nalazi se između 0.0 i 1.0. Ispišite kojoj kategoriji pripada ocjena na temelju sljedećih uvjeta:
+#>= 0.9 A
+#>= 0.8 B
+#>= 0.7 C
+#>= 0.6 D
+#< 0.6 F
+#Ako korisnik nije utipkao broj, ispišite na ekran poruku o grešci (koristite try i except naredbe). Također, ako je broj izvan intervala [0.0 i 1.0] potrebno je ispisati odgovarajuću poruku.
+
+print("Unesite broj izmedju 0.0 i 0.1")
+
+while True :
+    broj = float(input())
+    try:
+        if broj >= 0.0 and broj <= 1.0:
+            break
+    except:
+        print("Greska pri unosu!")
+
+
+
+if broj <= 0.6 :
+    print("F")
+elif broj >= 0.6 and broj < 0.7:
+    print("D")
+elif broj >= 0.7 and broj < 0.8:
+    print("C")
+elif broj >= 0.8 and broj < 0.9:
+    print("B")
+elif broj >= 0.9:
+    print("A")
