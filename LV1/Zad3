@@ -1,0 +1,29 @@
+#Zadatak 3
+#Napišite program koji od korisnika zahtijeva unos brojeva u beskonačnoj petlji sve dok korisnik ne upiše „Done“ (bez navodnika). Pri tome brojeve spremajte u listu. Nakon toga potrebno je ispisati koliko brojeva je #korisnik unio, njihovu srednju, minimalnu i maksimalnu vrijednost. Sortirajte listu i ispišite je na ekran.
+#Dodatno: osigurajte program od pogrešnog unosa (npr. slovo umjesto brojke) na način da program zanemari taj unos i ispiše odgovarajuću poruku.
+
+def Average(lst):
+    return sum(lst) / len(lst)
+
+my_list = []
+suma = 0
+
+print("Unesi brojeve u listu: ")
+while(1) :
+    temp = input()
+    if (temp == 'Done'):
+        break
+    elif(temp.isdigit() != True):
+        print("Niste unjeli broj.")
+        break
+    else:
+        my_list.append(float(temp))
+        suma+=float(temp)
+
+
+print(my_list)
+print("Korisnik je unio ukupno: ", len(my_list), "vrijednosti")
+print("Njihova srednja vrijednost iznosi: ", Average(my_list))
+print("Najveca vrijednost unesena vrijednost je: ", max(my_list))
+my_list.sort()
+print(my_list)
