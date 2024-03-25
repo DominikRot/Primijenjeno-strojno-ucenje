@@ -1,0 +1,40 @@
+#Zadatak 4
+#Napišite program koji od korisnika zahtijeva unos imena tekstualne datoteke. Program nakon toga treba tražiti linije
+#oblika:
+#X-DSPAM-Confidence: <neki_broj>
+#koje predstavljaju pouzdanost korištenog spam filtra. Potrebno je izračunati srednju vrijednost pouzdanosti. Koristite
+#datoteke mbox.txt i mbox-short.txt
+#Primjer
+#Ime datoteke: mbox.txt
+#Average X-DSPAM-Confidence: 0.894128046745
+#Ime datoteke: mbox-short.txt
+#Average X-DSPAM-Confidence: 0.750718518519
+
+total_confidence = 0
+counter = 0
+
+def spam_quality(file_name):
+    try:
+        with open(file_name, 'r') as file:
+            for line in file:
+                if line.startswith('X-DSPAM-Confidence: '):
+                    confidence = float(line.strip().split(':')[1])
+                    total_confidence+=confidence
+                    counter += 1
+            if counter > 0 :
+                avg_confidence = total_confidence / counter
+                print("Average X-DSPAM-Confidence: ", avg_confidence)
+            else:
+                print("There is none 'X-DSPAM-Confidence:' ")
+    except FileNotFoundError:
+        print("Error 404: File not found")
+    except Exception as e:
+        print("Unkown error has occurred", e)
+    finally:
+        try:
+            file.close()
+        except:
+            pass
+
+file_name = input("File name: ")
+spam_quality(file_name)
